@@ -1,4 +1,5 @@
 body {
-    background-image: url(../images/Background_Scroll.png), url(../images/Background_No_Scroll.png);
-    background-attachment: scroll, fixed;
+    background-image: url(../images/Background_No_Scroll.png), url(../images/Background_Scroll.png);
+    background-attachment: fixed, scroll;
+    background-repeat: no-repeat
   }
