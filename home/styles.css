@@ -1,7 +1,7 @@
 body {
-    background-image: url(.../images/Background_Scroll.png);
+    background-image: url(../images/Background_Scroll.png);
   }
 body {
-    background-image: url(.../images/Background_No_Scroll.png);
+    background-image: url(../images/Background_No_Scroll.png);
     background-attachment: fixed;
 }
