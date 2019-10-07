@@ -1,0 +1,7 @@
+body {
+    background-image: url("Background_Scroll.png");
+  }
+body {
+    background-image: url("Background_No_Scroll.png");
+    background-attachment: fixed;
+}
