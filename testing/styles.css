@@ -1,11 +1,1 @@
-body {
-    background-image: url(../images/Background_No_Scroll.png), url(../images/Background_Scroll.png);
-    background-attachment: fixed, scroll;
-  }
 
-body {
-    color: white;
-}
-p {
-    font-size: 72px;
-}
