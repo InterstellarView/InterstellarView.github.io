@@ -17,7 +17,7 @@
   transform: translateZ(0) ;
 }
 .parallax__layer--back {
-  transform: translateZ(-1px) scale(2) ;
+  transform: translateZ(-1px) scale(4) ;
 } 
 .content{
   position: absolute;
