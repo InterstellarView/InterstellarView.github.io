@@ -6,7 +6,6 @@
 }
 .parallax__layer {
   position: absolute;
-  background-repeat: repeat;
   top: 0;
   right: 0;
   bottom: 0;
