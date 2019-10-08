@@ -12,7 +12,7 @@
   left: 0;
 }
 .parallax__layer--base {
-  transform: translateZ(0) scale(2) ;
+  transform: translateZ(0) ;
 }
 .parallax__layer--back {
   transform: translateZ(-1px) scale(2) ;
