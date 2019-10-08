@@ -17,6 +17,3 @@
 .parallax__layer--back {
   transform: translateZ(-1px);
 }
-.void {
-  display: none
-}
