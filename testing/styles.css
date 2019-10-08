@@ -5,7 +5,8 @@
   overflow-y: auto;
 }
 .parallax__layer {
-  position: relative;
+  position: absolute;
+  background-repeat: repeat
   top: 0;
   right: 0;
   bottom: 0;
