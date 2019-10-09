@@ -33,8 +33,6 @@
 }
 .poshPlanet{
   position: absolute;
-  top: 50%;
-  left: 50%;
 }
 body {
   overflow: hidden;
