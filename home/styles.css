@@ -19,7 +19,13 @@
 .parallax__layer--back {
   transform: translateZ(-1px) scale(4) ;
 } 
-.content{
+.ship{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.gnome{
   position: absolute;
   top: 50%;
   left: 50%;
