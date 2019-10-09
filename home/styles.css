@@ -1,12 +1,13 @@
 .parallax {
   perspective: 1px;
   height: 100vh;
-  overflow-x: hidden;
+  overflow-x: auto;
   overflow-y: auto;
 }
 .parallax__layer {
   position: relative;
-  height: 100%;
+  height: 200%;
+  width: 200%;
   top: 0;
   right: 0;
   bottom: 0;
@@ -16,7 +17,7 @@
   transform: translateZ(0) ;
 }
 .parallax__layer--back {
-  transform: translateZ(-1px) scale(2) ;
+  transform: translateZ(-1px) scale(4) ;
 } 
 .content{
   position: absolute;
