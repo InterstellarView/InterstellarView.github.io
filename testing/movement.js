@@ -1,39 +1,45 @@
 
-			//init object globally
-			var objImage= null;
-			function init(){
-				objImage=document.getElementById("../images/Ship.png");				
-				objImage.style.position='relative';
-				objImage.style.left='0px';
-				objImage.style.top='0px';
-			}
-			function getKeyAndMove(e){				
-				var key_code=e.which||e.keyCode;
-				switch(key_code){
-					case 37: //left arrow key
-						moveLeft();
-						break;
-					case 38: //Up arrow key
-						moveUp();
-						break;
-					case 39: //right arrow key
-						moveRight();
-						break;
-					case 40: //down arrow key
-						moveDown();
-						break;						
-				}
-			}
-			function moveLeft(){
-				objImage.style.left=parseInt(objImage.style.left)-5 +'px';
-			}
-			function moveUp(){
-				objImage.style.top=parseInt(objImage.style.top)-5 +'px';
-			}
-			function moveRight(){
-				objImage.style.left=parseInt(objImage.style.left)+5 +'px';
-			}
-			function moveDown(){
-				objImage.style.top=parseInt(objImage.style.top)+5 +'px';
-			}
-
+            function leftArrowPressed() {
+                var element = document.getElementById("../images/Ship.png");
+                element.style.left = parseInt(element.style.left) - 10 + 'px';
+                }
+    
+                function rightArrowPressed() {
+                var element = document.getElementById("../images/Ship.png");
+                element.style.left = parseInt(element.style.left) + 10 + 'px';
+    
+                }
+    
+                function upArrowPressed() {
+                var element = document.getElementById("../images/Ship.png)";
+                element.style.top = parseInt(element.style.top) - 10 + 'px';
+                }
+    
+                function downArrowPressed() {
+                var element = document.getElementById("../images/Ship.png");
+                element.style.top = parseInt(element.style.top) + 10 + 'px';
+                }
+    
+                function moveSelection(evt) {
+                    switch (evt.keyCode) {
+                        case 37:
+                        leftArrowPressed();
+                        break;
+                        case 39:
+                        rightArrowPressed();
+                        break;
+                        case 38:
+                        upArrowPressed();
+                        break;
+                        case 40:
+                        downArrowPressed();
+                        break;
+                        }
+                    };
+    
+            function docReady()
+            {
+              
+              window.addEventListener('keydown', moveSelection);
+            }
+    
