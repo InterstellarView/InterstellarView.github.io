@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html>
-    <head><script type="text/javascript">
+
 			//init object globally
 			var objImage= null;
 			function init(){
-				objImage=document.getElementById("image1");				
+				objImage=document.getElementById("../images/Ship.png");				
 				objImage.style.position='relative';
 				objImage.style.left='0px';
 				objImage.style.top='0px';
@@ -38,6 +36,4 @@
 			function moveDown(){
 				objImage.style.top=parseInt(objImage.style.top)+5 +'px';
 			}
-			window.onload=init;
-		</script></head>
-</html>
+
