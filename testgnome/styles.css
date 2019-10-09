@@ -1,0 +1,30 @@
+.parallax {
+  perspective: 1px;
+  height: 100vh;
+  overflow-x: auto;
+  overflow-y: auto;
+}
+.parallax__layer {
+  position: relative;
+  height: 200%;
+  width: 200%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.parallax__layer--base {
+  transform: translateZ(0) ;
+}
+.parallax__layer--back {
+  transform: translateZ(-1px) scale(4) ;
+} 
+.content{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+body {
+  overflow: hidden;
+}
