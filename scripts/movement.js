@@ -7,6 +7,7 @@ var myGameArea = {
         this.canvas.width = 5000;
         this.canvas.height = 5000;
         this.context = this.canvas.getContext ("2d");
+        this.interval = setInterval(updateGameArea, 20);
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
     }
     clear : function() {
@@ -30,7 +31,14 @@ function component(width, height, color, x, y) {
     this.height = height;
     this.x = x;
     this.y = y;
-    ctx = myGameArea.context;
-    ctx.fillStyle = color;
-    ctx.fillRect(this.x, this.y, this.width, this.height);
+    this.update = function() {
+        ctx = myGameArea.context;
+        ctx.fillStyle = color;
+        ctx.fillRect(this.x, this.y, this.width, this.height);
+    }
+}
+
+function updateGameArea() {
+  myGameArea.clear();
+  myGamePiece.update();
 }
