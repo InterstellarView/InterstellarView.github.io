@@ -18,8 +18,8 @@ var myGamePiece;
 
     //Loads everything in
 function startGame() {
-    myGamePiece = new component(30, 30, "../images/Ship.png", 10, 120, "image");
     myGameArea.start();
+    myGamePiece = new component(30, 30, "../images/Ship.png", 10, 120, "image");
 }
     //Defines objects or whatever
 function component(width, height, color, x, y) {
