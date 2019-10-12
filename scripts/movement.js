@@ -1,5 +1,5 @@
 
-function myGameArea = {
+function startGame() {
     myGameArea.start();
 }
 
