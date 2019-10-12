@@ -1,10 +1,9 @@
-
 function startGame() {
     myGameArea.start();
 }
 
 var myGameArea = {
-    canvas : document.createElement("canvas")
+    canvas : document.createElement("canvas"),
     start : function() {
         this.canvas.width = 5000;
         this.canvas.height = 5000;
