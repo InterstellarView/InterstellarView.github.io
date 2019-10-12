@@ -7,7 +7,6 @@ var myGameArea = {
         this.canvas.width = 5000;
         this.canvas.height = 5000;
         this.context = this.canvas.getContext ("2d");
-        this.interval = setInterval(updateGameArea, 20);
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
     }
 }
