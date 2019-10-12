@@ -41,7 +41,6 @@ function component(width, height, color, x, y, type) {
           this.y,
           this.width, this.height);
       } else {
-    ctx = myGameArea.context;
     ctx.fillStyle = color;
     ctx.fillRect(this.x, this.y, this.width, this.height);
 }
