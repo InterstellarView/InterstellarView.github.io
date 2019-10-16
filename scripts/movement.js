@@ -17,10 +17,7 @@ var myGamePiece;
 // Functions
 
     //Loads everything in
-function startGame() {
-    myGameArea.start();
-    myGamePiece = new component(30, 30, "../images/Ship.png", 10, 120, "image");
-}
+
     //Defines objects or whatever
 function component(width, height, color, x, y, type) {
     this.type = type;
@@ -45,4 +42,8 @@ function component(width, height, color, x, y, type) {
     ctx.fillRect(this.x, this.y, this.width, this.height);
 }
 }
+}
+function startGame() {
+    myGameArea.start();
+    myGamePiece = new component(30, 30, "../images/Ship.png", 10, 120, "image");
 }
