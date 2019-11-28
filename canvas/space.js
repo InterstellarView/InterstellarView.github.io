@@ -19,6 +19,8 @@ var backgroundX = 0;
 var backgroundY = 0;
 var backgroundWidth;
 var backgroundHeight;
+var backgroundWidthScale = 2.2;
+var backgroundHeightScale = 2.3;
 var shipWidth;
 var shipHeight;
 var shipX;
@@ -30,23 +32,30 @@ var upPressed = false;
 var downPressed = false;
 var leftPressed = false;
 var rightPressed = false;
-var loopBuffer = 10;
+var loopBuffer = 1;
 
 function afterLoad() {
     // the stuff you want to do after page load happens here
     shipWidth = ship.width;
     shipHeight = ship.height;
+    background.width = canvas.width*backgroundWidthScale;
+    background.height = canvas.height*backgroundHeightScale;
     backgroundWidth = background.width;
     backgroundHeight = background.height;
     shipX = canvas.width/2-shipWidth/2;
     shipY = canvas.height/2-shipHeight/2;
     backgroundX = canvas.width/2-backgroundWidth/2;
     backgroundY = canvas.height/2-backgroundHeight/2;
-    const krysalPlanet = new planet(backgroundWidth*0.75, backgroundHeight*0.5, krysalPlanetImage, backgroundWidth*0.75, backgroundHeight*0.5);
+    const krysalPlanet = new planet(backgroundWidth*0.25, backgroundHeight*0.25, krysalPlanetImage, backgroundWidth*0.25, backgroundHeight*0.25)
     planetList.push(krysalPlanet);
     setInterval(draw, 10);
 }
 
+function disableSpeed() {
+    if(window.confirm("Are you sure you want to take off the speed limits?") == true) {
+        shipSlowSpeed = 1;
+    }
+}
 window.addEventListener("load", afterLoad, false);
 window.addEventListener("keydown", keyDownHandler, false);
 window.addEventListener("keyup", keyUpHandler, false);
@@ -97,23 +106,24 @@ function keyUpHandler(e){
 
 function drawPlanets() {
     for(var p=0; p < planetList.length; p++) {
-        planetList[p].x = ((shipX/2)*-1)+planetList[p].positionX;
-        planetList[p].y = ((shipY/2)*-1)+planetList[p].positionY;
+        planetList[p].x = (backgroundX)+planetList[p].positionX;
+        planetList[p].y = (backgroundY)+planetList[p].positionY;
         ctx.drawImage(planetList[p].image, planetList[p].x, planetList[p].y);
+        if(shipX)
     }
 }
 
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.drawImage(background, backgroundX, backgroundY,)
+    ctx.drawImage(background, backgroundX, backgroundY, background.width, background.height)
     drawPlanets()
-    ctx.drawImage(ship, shipX, shipY);
+    ctx.drawImage(ship, shipX, shipY, ship.width, ship.height);
     shipX += shipVelX;
     shipY += shipVelY;
-    backgroundX = (shipX/2)*-1;
-    backgroundY = (shipY/2)*-1;
     shipVelX *= shipSlowSpeed;
     shipVelY *= shipSlowSpeed;
+    backgroundX = (canvas.width/2-backgroundWidth/2)+((shipX-canvas.width/2+shipWidth/2)*-1);
+    backgroundY = (canvas.height/2-backgroundHeight/2)+((shipY-canvas.height/2+shipHeight/2)*-1);
     
     if(leftPressed == true){
         shipVelX -= 0.1;
@@ -133,9 +143,11 @@ function draw() {
         shipY = canvas.height;
     }
     if(shipX > canvas.width+loopBuffer) {
-        shipX = 0 -shipWidth;
+        shipX = 0-shipWidth;
     } else if(shipX+shipWidth < 0-loopBuffer) {
         shipX = canvas.width;
     }
-   
+    if(shipVelX > 854 || shipVelX < -854 || shipVelY > 661 || shipVelY < -661){
+        alert("NOW APPROACHING LUDICROUS SPEEDS")
+    }
 }
