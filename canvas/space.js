@@ -109,7 +109,6 @@ function drawPlanets() {
         planetList[p].x = (backgroundX)+planetList[p].positionX;
         planetList[p].y = (backgroundY)+planetList[p].positionY;
         ctx.drawImage(planetList[p].image, planetList[p].x, planetList[p].y);
-        if(shipX)
     }
 }
 
