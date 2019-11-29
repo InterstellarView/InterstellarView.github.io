@@ -3,12 +3,13 @@ var ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 class planet {
-    constructor(x, y, image, positionX, positionY,){
+    constructor(x, y, image, positionX, positionY, name){
         this.x = x;
         this.y = y;
         this.image = image;
         this.positionX = positionX;
         this.positionY = positionY;
+        this.name = name;
     }
 }
 var ship = document.getElementById("ship");
@@ -33,7 +34,12 @@ var downPressed = false;
 var leftPressed = false;
 var rightPressed = false;
 var loopBuffer = 1;
+var planetTextBuffer = 10;
 var running = true;
+
+function getDirection(x, y) {
+  return Math.atan2(y, x) * 180 / Math.PI;
+}
 
 function afterLoad() {
     // the stuff you want to do after page load happens here
@@ -47,7 +53,7 @@ function afterLoad() {
     shipY = canvas.height/2-shipHeight/2;
     backgroundX = canvas.width/2-backgroundWidth/2;
     backgroundY = canvas.height/2-backgroundHeight/2;
-    const krysalPlanet = new planet(backgroundWidth*0.25, backgroundHeight*0.25, krysalPlanetImage, backgroundWidth*0.25, backgroundHeight*0.25)
+    const krysalPlanet = new planet(backgroundWidth*0.25, backgroundHeight*0.25, krysalPlanetImage, backgroundWidth*0.25, backgroundHeight*0.25, "LOFAC")
     planetList.push(krysalPlanet);
     setInterval(draw, 10);
 }
@@ -109,10 +115,24 @@ function drawPlanets() {
     for(var p=0; p < planetList.length; p++) {
         planetList[p].x = (backgroundX)+planetList[p].positionX;
         planetList[p].y = (backgroundY)+planetList[p].positionY;
+        
         ctx.drawImage(planetList[p].image, planetList[p].x, planetList[p].y);
+        
+        ctx.beginPath();
+            ctx.lineWidth = "6";
+            ctx.strokeStyle = "rgba(0, 255, 0, 0.5)";
+            ctx.rect(planetList[p].x, planetList[p].y, planetList[p].image.width, planetList[p].image.height);
+        ctx.stroke();
+        
+        ctx.font = "30px Arial";
+        ctx.fillStyle = "rgba(0, 255, 0, 0.5)";
+        ctx.textAlign = "center";
+        ctx.fillText(planetList[p].name, planetList[p].x + (planetList[p].image.width / 2), planetList[p].y-planetTextBuffer);
+        
         if(shipX < planetList[p].x + planetList[p].image.width && shipX + shipWidth > planetList[p].x && shipY < planetList[p].y + planetList[p].image.height && shipY + shipHeight > planetList[p].y){
             running = false;
-            window.location.href = "http://farragofiction.com";
+            window.alert("Now landing on: " + planetList[p].name)
+            window.location.href = "https://www.google.com";
         }
     }
 }
@@ -121,7 +141,7 @@ function draw() {
     if(running == true){
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.drawImage(background, backgroundX, backgroundY, background.width, background.height)
-        drawPlanets()
+        drawPlanets();
         ctx.drawImage(ship, shipX, shipY, shipWidth, shipHeight );
     }
     shipX += shipVelX;
@@ -141,6 +161,7 @@ function draw() {
         shipVelY -= 0.1;
     } else if (downPressed == true) {
         shipVelY += 0.1;
+        ship = document.getElementById("krysalPlanet");
     }
     
     if(shipY > canvas.height+loopBuffer){
