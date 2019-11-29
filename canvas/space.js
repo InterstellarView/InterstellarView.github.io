@@ -33,6 +33,7 @@ var downPressed = false;
 var leftPressed = false;
 var rightPressed = false;
 var loopBuffer = 1;
+var running = true;
 
 function afterLoad() {
     // the stuff you want to do after page load happens here
@@ -109,14 +110,20 @@ function drawPlanets() {
         planetList[p].x = (backgroundX)+planetList[p].positionX;
         planetList[p].y = (backgroundY)+planetList[p].positionY;
         ctx.drawImage(planetList[p].image, planetList[p].x, planetList[p].y);
+        if(shipX < planetList[p].x + planetList[p].image.width && shipX + shipWidth > planetList[p].x && shipY < planetList[p].y + planetList[p].image.height && shipY + shipHeight > planetList[p].y){
+            running = false;
+            window.location.href = "http://farragofiction.com";
+        }
     }
 }
 
 function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.drawImage(background, backgroundX, backgroundY, background.width, background.height)
-    drawPlanets()
-    ctx.drawImage(ship, shipX, shipY, ship.width, ship.height);
+    if(running == true){
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(background, backgroundX, backgroundY, background.width, background.height)
+        drawPlanets()
+        ctx.drawImage(ship, shipX, shipY, shipWidth, shipHeight );
+    }
     shipX += shipVelX;
     shipY += shipVelY;
     shipVelX *= shipSlowSpeed;
