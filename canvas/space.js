@@ -161,7 +161,6 @@ function draw() {
         shipVelY -= 0.1;
     } else if (downPressed == true) {
         shipVelY += 0.1;
-        ship = document.getElementById("krysalPlanet");
     }
     
     if(shipY > canvas.height+loopBuffer){
